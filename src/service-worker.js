@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules
 // for the list of available Workbox modules, or add any other
@@ -22,7 +23,6 @@ precacheAndRoute(self.__WB_MANIFEST)
 // Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
-// eslint-disable-next-line prefer-regex-literals
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$')
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
