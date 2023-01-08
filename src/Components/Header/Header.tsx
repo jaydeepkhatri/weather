@@ -23,7 +23,7 @@ const Header = () => {
 
 
       {/* Sidebar in Header */}
-      <div className={`h-[100vh] border-l fixed right-0 ${toggle ? "w-[300px]" : "w-0"} top-0 duration-100 bg-black z-10`}>
+      <div className={`h-[100vh] fixed right-0 ${toggle ? "w-[300px]" : "w-0"} top-0 duration-100 bg-slate-800 z-10`}>
         <button className="ml-auto mt-2 mr-2 block text-xl" onClick={() => { setToggle(!toggle) }}><RiCloseLine /></button>
         <h2 className="text-4xl mt-12 px-8 flex justify-between">Weather.
           {
@@ -47,7 +47,7 @@ const Header = () => {
               <ul className="mt-0 px-0">
                 {
                   cities.map((city, i) => {
-                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-base relative flex justify-between items-center bg-cus-gray-hover duration-100">{city} <RiDeleteBin6Line /></li>
+                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center bg-cus-gray-hover duration-100">{city} <RiDeleteBin6Line /></li>
                   })
                 }
               </ul>
