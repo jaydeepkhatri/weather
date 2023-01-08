@@ -15,13 +15,16 @@ const Header = () => {
     <>
       <div className="header flex justify-center">
         <form className="flex flex-1 bg-cus-gray rounded-2xl max-w-[460px]">
-          <input type="text" placeholder="Search City" className="flex-1 rounded-2xl color-white px-5 py-2 bg-cus-gray outline-none focus:outline-none" />
-          <button className="px-3 py-2"><BiSearch /></button>
+          <input type="text" placeholder="Search City" className="flex-1 rounded-2xl text-xl color-white px-5 py-2 bg-cus-gray outline-none focus:outline-none" />
+          <button className="px-3 py-2 text-xl"><BiSearch /></button>
         </form>
-        <button className="rounded-2xl text-lg ml-2 py-3 px-4 bg-cus-gray-hover duration-100" onClick={() => { setToggle(!toggle) }}><RiMenu3Line /></button>
+        <button className="rounded-2xl text-xl ml-2 py-3 px-4 bg-cus-gray-hover duration-100" onClick={() => { setToggle(!toggle) }}><RiMenu3Line /></button>
       </div>
+
+
+      {/* Sidebar in Header */}
       <div className={`h-[100vh] border-l fixed right-0 ${toggle ? "w-[300px]" : "w-0"} top-0 duration-100 bg-black z-10`}>
-        <button className="ml-auto mt-2 mr-2 block" onClick={() => { setToggle(!toggle) }}><RiCloseLine /></button>
+        <button className="ml-auto mt-2 mr-2 block text-xl" onClick={() => { setToggle(!toggle) }}><RiCloseLine /></button>
         <h2 className="text-4xl mt-12 px-8 flex justify-between">Weather.
           {
             darkMode ?
@@ -40,11 +43,11 @@ const Header = () => {
         {
           cities.length > 0 ?
             <>
-              <p className="mt-4 px-8 text-gray-500 text-sm">Recent Searches</p>
+              <p className="mt-12 px-8 text-gray-500 text-sm">Recent Searches</p>
               <ul className="mt-0 px-0">
                 {
                   cities.map((city, i) => {
-                    return <li key={i} className="px-8 py-2 my-0 relative flex justify-between items-center bg-cus-gray-hover duration-100">{city} <RiDeleteBin6Line /></li>
+                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-base relative flex justify-between items-center bg-cus-gray-hover duration-100">{city} <RiDeleteBin6Line /></li>
                   })
                 }
               </ul>
