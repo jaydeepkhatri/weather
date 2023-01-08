@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #000000;
+        color: #FFF;
+        font-family: "Jost", sans-serif;
+    }
+}
+
+
+
+.bg-cus-gray {
+    background: #393939;
+}
+
+.bg-cus-gray-hover:hover {
+    background: #393939;
+}
+
+.text-cus-gray {
+    color: #888888;
+}
