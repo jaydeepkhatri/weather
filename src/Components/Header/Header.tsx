@@ -13,8 +13,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="header flex">
-        <form className="flex flex-1 bg-cus-gray rounded-2xl">
+      <div className="header flex justify-center">
+        <form className="flex flex-1 bg-cus-gray rounded-2xl max-w-[460px]">
           <input type="text" placeholder="Search City" className="flex-1 rounded-2xl color-white px-5 py-2 bg-cus-gray outline-none focus:outline-none" />
           <button className="px-3 py-2"><BiSearch /></button>
         </form>
