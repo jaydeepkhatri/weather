@@ -1,4 +1,4 @@
-import { Header, WeatherInfo, AdditionalInfo } from "./Components"
+import { Header, WeatherInfo } from "./Components"
 
 function App() {
   return (

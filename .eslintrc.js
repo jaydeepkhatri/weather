@@ -5,10 +5,10 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard-with-typescript'
+    'standard-with-typescript',
+    'prettier'
   ],
-  overrides: [
-  ],
+  overrides: [ ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -17,6 +17,5 @@ module.exports = {
   plugins: [
     'react'
   ],
-  rules: {
-  }
-}
+  rules: { }
+};
