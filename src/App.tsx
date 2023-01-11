@@ -12,7 +12,7 @@ function App() {
 
 
     let isdarkMode = localStorage.getItem('darkMode');
-    if (isdarkMode!.length > 0) {
+    if (isdarkMode !== null) {
       setDarkMode(() => isdarkMode === "true");
     };
   }, [])
