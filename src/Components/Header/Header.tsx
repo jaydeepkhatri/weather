@@ -4,6 +4,7 @@ import { useState, useContext, useRef } from "react";
 
 
 import { AppContext } from "../../App";
+import { arrayBuffer } from "stream/consumers";
 
 
 const Header = () => {
@@ -36,6 +37,11 @@ const Header = () => {
     if(localStorage["cities"]) {
       let localStoreCities = JSON.parse(localStorage.getItem('cities') || '');
       localStoreCities.push(city);
+      
+      if(new Set(localStoreCities).size !== localStoreCities.length) {
+        return false;
+      }
+
       setCities(localStoreCities);
       localStorage.setItem("cities", JSON.stringify(localStoreCities))
     } else {

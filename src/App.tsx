@@ -9,11 +9,14 @@ function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
+    
+    /* Check darkmode */
     let isdarkMode = localStorage.getItem('darkMode');
     if (isdarkMode !== null) {
       setDarkMode(() => isdarkMode === "true");
     };
 
+    /* Check Cities */
     let cities = localStorage.getItem('cities');
     if(cities !== null) {
       setCities(JSON.parse(cities))
