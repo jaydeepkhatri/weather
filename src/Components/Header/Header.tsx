@@ -2,21 +2,21 @@ import { BiSearch } from "react-icons/bi";
 import { RiMenu3Line, RiDeleteBin6Line, RiCloseLine, RiSunLine, RiMoonLine } from "react-icons/ri";
 import { useState, useContext, useRef } from "react";
 
-
 import { AppContext } from "../../App";
-import { arrayBuffer } from "stream/consumers";
+import axios from "axios";
 
 
 const Header = () => {
+  const API_KEY = "468d48bb6914bad6aed32c6919cd8397";
   const searchRef = useRef<HTMLInputElement>(null!);
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [searchCityInput, setSearchCityInput] = useState<string>("");
 
-  const { darkMode, setDarkMode, cities, setCities } = useContext(AppContext);  
+  const { darkMode, setDarkMode, cities, setCities, setSearchCityData, setIsLoading } = useContext(AppContext);
 
 
-  const handleDarkMode = (theme:boolean) => {
-    localStorage.setItem("darkMode", ""+theme);
+  const handleDarkMode = (theme: boolean) => {
+    localStorage.setItem("darkMode", "" + theme);
     setDarkMode(theme);
   }
 
@@ -24,7 +24,7 @@ const Header = () => {
 
     //Handle Input
     let city = searchCityInput;
-    if((city.length === 0) || city === '') {
+    if ((city.length === 0) || city === '') {
       return false;
     }
 
@@ -34,11 +34,12 @@ const Header = () => {
     city = city.trim();
 
     // add the city to localStorage
-    if(localStorage["cities"]) {
+    if (localStorage["cities"]) {
       let localStoreCities = JSON.parse(localStorage.getItem('cities') || '');
-      localStoreCities.push(city);
-      
-      if(new Set(localStoreCities).size !== localStoreCities.length) {
+      //localStoreCities.push(city);
+      localStoreCities = [city].concat(localStoreCities);
+
+      if (new Set(localStoreCities).size !== localStoreCities.length) {
         return false;
       }
 
@@ -48,15 +49,17 @@ const Header = () => {
       setCities([city]);
       localStorage.setItem("cities", JSON.stringify([city]))
     }
+
+    fetchApi(city);
   }
 
   //handle the search input
-  const handleSearchCityInputChange = (cityCharacter:string) => {
+  const handleSearchCityInputChange = (cityCharacter: string) => {
     setSearchCityInput(cityCharacter);
   }
 
   //Remove City from Sidebar
-  const removeCitySearchList = (cityIndex:number) => {
+  const removeCitySearchList = (cityIndex: number) => {
     let localStoreCities = JSON.parse(localStorage.getItem('cities') || '');
     localStoreCities.splice(cityIndex, 1);
     setCities(localStoreCities);
@@ -64,12 +67,23 @@ const Header = () => {
   }
 
 
+  // fetch
+  const fetchApi = (city:string) => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+      .then(res => {
+        setSearchCityData(res.data);
+        setIsLoading(false)
+        console.log(res.data)
+      });
+  }
+
+
   return (
     <>
       <div className="header flex justify-center">
         <form className="flex flex-1 bg-gray-200 dark:bg-[#393939] rounded-2xl max-w-[460px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
-          <input type="text" placeholder="Search City" ref={searchRef} onChange={(e) => handleSearchCityInputChange(e.target.value)} className="flex-1 rounded-2xl text-xl color-white px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
-          <button className="px-3 py-2 text-xl" onClick={(e) => {e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
+          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
+          <button className="px-3 py-2 text-xl" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
         </form>
         <button className="rounded-2xl text-xl ml-2 py-3 px-4 hover:bg-gray-200 dark:hover:bg-[#393939] duration-100" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
       </div>
@@ -99,7 +113,7 @@ const Header = () => {
               <p className="mt-12 px-8 text-gray-500 text-sm">Recent Searches</p>
               <ul className="mt-0 px-0">
                 {
-                  cities.map((city:string, i:number) => {
+                  cities.map((city: string, i: number) => {
                     return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100">{city} <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
                   })
                 }
