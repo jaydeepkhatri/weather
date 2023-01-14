@@ -1,4 +1,4 @@
-import { Header, WeatherInfo } from "./Components";
+import { Header, WeatherInfo, Loading } from "./Components";
 import { useState, createContext, useEffect } from "react";
 
 export const AppContext = createContext<any>(null);
@@ -33,7 +33,7 @@ function App() {
           <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
             <div className="container mx-auto p-5">
               <Header />
-              { isLoading ? <h1>Seach</h1>  : <WeatherInfo /> }
+              { isLoading ? <Loading />  : <WeatherInfo /> }
             </div>
           </div>
         </div>

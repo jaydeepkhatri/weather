@@ -20,10 +20,15 @@ const Header = () => {
     setDarkMode(theme);
   }
 
-  const handleNewCityInput = () => {
+  const handleNewCityInput = (ArgCity?:string) => {
 
-    //Handle Input
-    let city = searchCityInput;
+    let city = searchCityInput
+
+    //Get Input
+    if(typeof ArgCity !== "undefined") {
+      city = ArgCity;
+    }
+
     if ((city.length === 0) || city === '') {
       return false;
     }
@@ -114,7 +119,7 @@ const Header = () => {
               <ul className="mt-0 px-0">
                 {
                   cities.map((city: string, i: number) => {
-                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100">{city} <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
+                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100" onClick={() => {handleNewCityInput(city)}}>{city} <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
                   })
                 }
               </ul>
