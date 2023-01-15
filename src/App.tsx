@@ -9,6 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [searchCityData, setSearchCityData] = useState<{}>({});
+  const [hourlyForcast, setHourlyForcast] = useState("");
 
   
   useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={{ darkMode, setDarkMode, cities, setCities, searchCityData, setSearchCityData, setIsLoading }}>
+      <AppContext.Provider value={{ darkMode, setDarkMode, cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast }}>
         <div className={`${darkMode ? "dark" : ''}`}>
           <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
             <div className="container mx-auto p-5">

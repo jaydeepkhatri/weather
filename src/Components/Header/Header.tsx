@@ -12,7 +12,7 @@ const Header = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [searchCityInput, setSearchCityInput] = useState<string>("");
 
-  const { darkMode, setDarkMode, cities, setCities, setSearchCityData, setIsLoading } = useContext(AppContext);
+  const { darkMode, setDarkMode, cities, setCities, setSearchCityData, setIsLoading, setHourlyForcast } = useContext(AppContext);
 
 
   const handleDarkMode = (theme: boolean) => {
@@ -80,6 +80,13 @@ const Header = () => {
         setIsLoading(false)
         console.log(res.data)
       });
+
+
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+      .then(res => {
+        setHourlyForcast(res.data);
+        console.log(res.data);
+      })
   }
 
 
