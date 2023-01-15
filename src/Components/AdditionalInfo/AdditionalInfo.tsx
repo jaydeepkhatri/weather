@@ -8,7 +8,7 @@ const AdditionalInfo = () => {
 
   const calculateTime = (time:number) => {
     let date = new Date();
-    date.setTime(time);
+    date.setTime(time * 1000);
     let hour = date.getHours();
     let minutes = date.getMinutes();
     return `${hour}:${minutes}`;
@@ -25,19 +25,19 @@ const AdditionalInfo = () => {
       <div className="bg-slate-200 dark:bg-[#393939] p-5 group rounded-3xl w-full max-w-[240px] duration-100 hover:bg-rose-600 dark:hover:bg-rose-600">
         <RiWindyLine className="text-5xl group-hover:text-white dark:group-hover:text-white" />
         <p className="text-cus-gray mt-6 group-hover:text-slate-200 dark:group-hover:text-white duration-100">Wind</p>
-        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight flex items-center duration-100">{`${searchCityData.wind.speed}KM/h`} <RiArrowUpLine style={{ transform: `rotate(${searchCityData.wind.deg}deg)` }} className={`ml-1`} /></p>
+        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight flex items-center duration-100">{`${searchCityData.wind.speed} KM/h`} <RiArrowUpLine style={{ transform: `rotate(${searchCityData.wind.deg}deg)` }} className={`ml-1`} /></p>
       </div>
 
       <div className="bg-slate-200 dark:bg-[#393939] p-5 group rounded-3xl w-full max-w-[240px] ml-auto duration-100 hover:bg-green-600 dark:hover:bg-green-600">
         <TbSunrise className="text-5xl group-hover:text-white dark:group-hover:text-white" />
         <p className="text-cus-gray mt-6 group-hover:text-slate-200 dark:group-hover:text-white duration-100">Sunrise</p>
-        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight duration-100">{calculateTime(searchCityData.sys.sunrise)}</p>
+        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight duration-100">{calculateTime(searchCityData.sys.sunrise)} AM</p>
       </div>
 
       <div className="bg-slate-200 dark:bg-[#393939] p-5 group rounded-3xl w-full max-w-[240px] duration-100 hover:bg-orange-600 dark:hover:bg-orange-600">
         <TbSunset className="text-5xl group-hover:text-white dark:group-hover:text-white" />
         <p className="text-cus-gray mt-6 group-hover:text-slate-200 dark:group-hover:text-white duration-100">Sunset</p>
-        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight duration-100">07:30 PM</p>
+        <p className="text-2xl group-hover:text-white dark:group-hover:text-white leading-tight duration-100">{calculateTime(searchCityData.sys.sunset)} PM</p>
       </div>
     </div>
   );
