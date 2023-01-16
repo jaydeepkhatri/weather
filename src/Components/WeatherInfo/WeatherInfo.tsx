@@ -5,14 +5,14 @@ import { AppContext } from "../../App";
 
 const WeatherInfo = () => {
   const {searchCityData} = useContext(AppContext);
-  const FormatTemperature = (temp:number) => `${temp.toFixed(1)}°C`;
+  const FormatTemperature = (temp:number) => { return `${temp.toFixed(1)}°C` };
 
   return (
     <>
       <div className="flex flex-col items-center justify-center py-24 leading-normal">
-        <p className="text-8xl">{searchCityData.main.temp}°C</p>
+        <p className="text-8xl">{FormatTemperature(searchCityData.main.temp)}</p>
         <p className="text-slate-700 dark:text-slate-200">Feels like: {FormatTemperature(searchCityData.main['feels_like'])}</p>
-        <p className="mt-2 text-cus-gray">{searchCityData.weather[0].description}</p>
+        <p className="mt-2 text-[#393939]">{searchCityData.weather[0].description}</p>
 
         <div className="flex mt-2">
           <div className="flex items-center text-cus-gray">
