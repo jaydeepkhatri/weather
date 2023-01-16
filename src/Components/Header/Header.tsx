@@ -20,12 +20,12 @@ const Header = () => {
     setDarkMode(theme);
   }
 
-  const handleNewCityInput = (ArgCity?:string) => {
+  const handleNewCityInput = (ArgCity?: string) => {
 
     let city = searchCityInput
 
     //Get Input
-    if(typeof ArgCity !== "undefined") {
+    if (typeof ArgCity !== "undefined") {
       city = ArgCity;
       fetchApi(city);
       return false;
@@ -75,20 +75,18 @@ const Header = () => {
 
 
   // fetch
-  const fetchApi = (city:string) => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
-      .then(res => {
-        setSearchCityData(res.data);
-        setIsLoading(false)
-        console.log(res.data)
-      });
-
-
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
-      .then(res => {
-        setHourlyForcast(res.data);
-        console.log(res.data);
-      })
+  const fetchApi = (city: string) => {
+    axios.all([
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`),
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+    ])
+      .then(axios.spread((obj1, obj2) => {
+        setSearchCityData(obj1.data);
+        setIsLoading(false);
+        setHourlyForcast(obj2.data);
+        console.log(obj1.data);
+        console.log(obj2.data);
+      }));
   }
 
 
@@ -128,8 +126,8 @@ const Header = () => {
               <ul className="mt-0 px-0">
                 {
                   cities.map((city: string, i: number) => {
-                    
-                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100"><span onClick={() => {handleNewCityInput(city)}}>{city}</span> <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
+
+                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100"><span onClick={() => { handleNewCityInput(city) }}>{city}</span> <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
                   })
                 }
               </ul>

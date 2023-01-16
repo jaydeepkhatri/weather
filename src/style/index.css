@@ -27,3 +27,20 @@
 .text-cus-gray {
     color: #888888;
 }
+
+::-webkit-scrollbar {
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb { 
+    background: rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:rgba(0,0,0,0.6)
+
+}

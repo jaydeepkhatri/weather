@@ -27,9 +27,11 @@ function App() {
     }
   }, []);
 
+  const FormatTemperature = (temp:number) => { return `${temp.toFixed(1)}°C` };
+
   return (
     <>
-      <AppContext.Provider value={{ darkMode, setDarkMode, cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast }}>
+      <AppContext.Provider value={{ darkMode, setDarkMode, cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast, FormatTemperature }}>
         <div className={`${darkMode ? "dark" : ''}`}>
           <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
             <div className="container mx-auto p-5">
