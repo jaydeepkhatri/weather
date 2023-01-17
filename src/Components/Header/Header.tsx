@@ -93,7 +93,7 @@ const Header = () => {
   return (
     <>
       <div className="header flex justify-center">
-        <form className="flex flex-1 bg-gray-200 dark:bg-[#393939] rounded-2xl max-w-[460px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
+        <form className="flex flex-1 bg-gray-200 dark:bg-[#393939] rounded-2xl max-w-[400px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
           <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
           <button className="px-3 py-2 text-xl" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
         </form>

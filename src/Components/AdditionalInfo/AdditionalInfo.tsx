@@ -38,9 +38,9 @@ const AdditionalInfo = () => {
       <div className="grid grid-cols-2 m-auto gap-2 max-w-[460px]">
         <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-2 bg-gray-100 dark:bg-[#393939] flex overflow-auto p-5 group rounded-3xl duration-100 hover:bg-teal-600 dark:hover:bg-teal-600">
           <div className='mr-6 flex flex-col items-center'>
-            <span className='text-slate-600 dark:text-gray-500 text-sm whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>Now</span>
+            <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>Now</span>
             <img src={handleWeatherImg(searchCityData.weather[0].main)} className="mt-1" alt={searchCityData.weather[0].main} />
-            <span className="mt-1 group-hover:text-white dark:group-hover:text-white">{FormatTemperature(searchCityData.main.temp)}</span>
+            <span className="mt-1 text-xl group-hover:text-white dark:group-hover:text-white">{FormatTemperature(searchCityData.main.temp)}</span>
           </div>
           {
 
@@ -48,9 +48,9 @@ const AdditionalInfo = () => {
             hourlyForcast.map((forcast: any, index: number) => {
               return (
                 <div className='mr-6 flex flex-col items-center last:mr-0' key={index}>
-                  <span className='text-slate-600 dark:text-gray-500 text-sm whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>{timeFormatter.format(new Date(forcast.dt_txt))}</span>
+                  <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>{timeFormatter.format(new Date(forcast.dt_txt))}</span>
                   <img src={handleWeatherImg(forcast.weather[0].main)} className="mt-1" alt={searchCityData.weather[0].main} />
-                  <span className='mt-1 group-hover:text-white dark:group-hover:text-white'>{FormatTemperature(forcast.main.temp)}</span>
+                  <span className='mt-1 text-xl group-hover:text-white dark:group-hover:text-white'>{FormatTemperature(forcast.main.temp)}</span>
                 </div>)
             })
 
