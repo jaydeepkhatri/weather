@@ -13,7 +13,6 @@ const thunderstorm = require("../../assets/img/thunderstorm.png");
 const AdditionalInfo = () => {
   let { searchCityData, hourlyForcast, FormatTemperature } = useContext(AppContext);
   hourlyForcast = hourlyForcast.list.slice(2, 10);
-  console.log(hourlyForcast);
 
   const timeFormatter = Intl.DateTimeFormat("en-US", {
     hour12: true,
