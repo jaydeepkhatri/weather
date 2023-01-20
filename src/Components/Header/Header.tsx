@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 const Header = () => {
-  const API_KEY = "468d48bb6914bad6aed32c6919cd8397";
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const searchRef = useRef<HTMLInputElement>(null!);
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [searchCityInput, setSearchCityInput] = useState<string>("");
