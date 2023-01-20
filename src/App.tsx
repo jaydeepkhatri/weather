@@ -1,4 +1,4 @@
-import { Header, WeatherInfo, Loading, Error } from "./Components";
+import { Header, WeatherInfo, Home, Error, Loader } from "./Components";
 import { useState, createContext, useEffect } from "react";
 
 export const AppContext = createContext<any>(null);
@@ -6,10 +6,10 @@ export const AppContext = createContext<any>(null);
 function App() {
 
   const [cities, setCities] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [searchCityData, setSearchCityData] = useState<{}>({});
-  const [hourlyForcast, setHourlyForcast] = useState("");
+  const [hourlyForcast, setHourlyForcast] = useState<{}>({});
   const [isError, setIsError] = useState<boolean>(false);
 
   
@@ -37,7 +37,13 @@ function App() {
           <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
             <div className="container mx-auto p-5">
               <Header />
-              { isLoading ? <Loading /> : isError ? <Error /> : <WeatherInfo /> }
+              
+              {
+                isLoading ? <Loader /> :
+                  isError ? <Error /> :
+                    Object.keys(searchCityData).length === 0 ? <Home /> :
+                      <WeatherInfo />
+              }
             </div>
           </div>
         </div>

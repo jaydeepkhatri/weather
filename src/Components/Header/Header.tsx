@@ -40,23 +40,6 @@ const Header = () => {
     //sanitize input
     city = city.trim();
 
-    // add the city to localStorage
-    if (localStorage["cities"]) {
-      let localStoreCities = JSON.parse(localStorage.getItem('cities') || '');
-      //localStoreCities.push(city);
-      localStoreCities = [city].concat(localStoreCities);
-
-      if (new Set(localStoreCities).size !== localStoreCities.length) {
-        return false;
-      }
-
-      setCities(localStoreCities);
-      localStorage.setItem("cities", JSON.stringify(localStoreCities))
-    } else {
-      setCities([city]);
-      localStorage.setItem("cities", JSON.stringify([city]))
-    }
-
     fetchApi(city);
   }
 
@@ -76,6 +59,9 @@ const Header = () => {
 
   // fetch
   const fetchApi = (city: string) => {
+    setIsLoading(true);
+
+
     axios.all([
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`),
       axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
@@ -85,6 +71,23 @@ const Header = () => {
         setSearchCityData(obj1.data);
         setIsLoading(false);
         setHourlyForcast(obj2.data);
+
+        // add the city to localStorage
+        if (localStorage["cities"]) {
+          let localStoreCities = JSON.parse(localStorage.getItem('cities') || '');
+          localStoreCities = [city].concat(localStoreCities);
+
+          if (new Set(localStoreCities).size !== localStoreCities.length) {
+            return false;
+          }
+
+          setCities(localStoreCities);
+          localStorage.setItem("cities", JSON.stringify(localStoreCities))
+        } else {
+          setCities([city]);
+          localStorage.setItem("cities", JSON.stringify([city]))
+        }
+
       }))
       .catch(error => {
         setIsLoading(false);
