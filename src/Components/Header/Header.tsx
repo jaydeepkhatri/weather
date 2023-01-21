@@ -100,16 +100,16 @@ const Header = () => {
     <>
       <div className="header flex justify-center">
         <form className="flex flex-1 bg-gray-200 dark:bg-[#393939] rounded-2xl max-w-[400px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
-          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
-          <button className="px-3 py-2 text-xl" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
+          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white w-0 px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
+          <button className="px-3 py-2 text-xl" aria-label="Search Button" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
         </form>
-        <button className="rounded-2xl text-xl ml-2 py-3 px-4 hover:bg-gray-200 dark:hover:bg-[#393939] duration-100" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
+        <button className="rounded-2xl text-xl ml-2 py-3 px-4 hover:bg-gray-200 dark:hover:bg-[#393939] duration-100" aria-label="Handle Open/Close of Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
       </div>
 
 
       {/* Sidebar in Header */}
       <div className={`h-[100vh] fixed right-0 ${toggleMenu ? "w-[300px]" : "w-0"} top-0 duration-100 bg-gray-200 dark:bg-slate-800 z-10`}>
-        <button className="ml-auto mt-2 mr-2 block text-xl" onClick={() => { setToggleMenu(!toggleMenu) }}><RiCloseLine /></button>
+        <button className="ml-auto mt-2 mr-2 block text-xl" aria-label="Close Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiCloseLine /></button>
         <h2 className="text-4xl mt-12 px-8 flex justify-between">Weather.
           {
             darkMode ?
@@ -141,8 +141,8 @@ const Header = () => {
             :
             <>
               <div className="my-20">
-                <p className="text-center text-xl px-8 mt-2 ">Oops, No Data!</p>
-                <p className="text-center text-cus-gray px-8">Use the search(<BiSearch className="inline" />) to check the current weather.</p>
+                <p className="text-center text-2xl px-8 mt-2 ">Oops, No Data!</p>
+                <p className="text-center text-sm mt-1 px-8">Use the search(<BiSearch className="inline" />) to check the current weather.</p>
               </div>
             </>
         }
