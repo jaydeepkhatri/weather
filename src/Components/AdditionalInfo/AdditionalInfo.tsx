@@ -2,13 +2,7 @@ import { RiDropLine, RiWindyLine, RiArrowUpLine } from 'react-icons/ri';
 import { TbSunrise, TbSunset } from 'react-icons/tb';
 import { useContext } from "react";
 import { AppContext } from "../../App";
-const clouds = require("../../assets/img/clouds.png");
-const atmosphere = require("../../assets/img/atmosphere.png");
-const clear = require("../../assets/img/clear.png");
-const drizzle = require("../../assets/img/drizzle.png");
-const rain = require("../../assets/img/rain.png");
-const snow = require("../../assets/img/snow.png");
-const thunderstorm = require("../../assets/img/thunderstorm.png");
+
 
 const AdditionalInfo = () => {
   let { searchCityData, hourlyForcast, FormatTemperature } = useContext(AppContext);
@@ -20,15 +14,6 @@ const AdditionalInfo = () => {
     hour: "numeric",
   });
 
-  const handleWeatherImg = (weather:string) => {
-    if(weather === "Thunderstorm") return thunderstorm;
-    if(weather === "Drizzle") return drizzle;
-    if(weather === "Rain") return rain;
-    if(weather === "Snow") return snow;
-    if(weather === "Mist" || weather === "Smoke" || weather === "Haze" || weather === "Dust" || weather === "Fog" || weather === "Sand" || weather === "Ash" || weather === "Squall" || weather === "Tornado") return atmosphere;
-    if(weather === "Clear") return clear;
-    if(weather === "Clouds") return clouds;
-  }
 
 
   return (
@@ -38,7 +23,7 @@ const AdditionalInfo = () => {
         <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-2 bg-gray-100 dark:bg-[#393939] flex overflow-auto p-5 group rounded-3xl duration-100 hover:bg-teal-600 dark:hover:bg-teal-600">
           <div className='mr-6 flex flex-col items-center'>
             <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>Now</span>
-            <img src={handleWeatherImg(searchCityData.weather[0].main)} className="mt-1" alt={searchCityData.weather[0].main} />
+            <img src={`/img/${searchCityData.weather[0].icon}.png`} className="mt-1" alt={searchCityData.weather[0].main} />
             <span className="mt-1 text-xl group-hover:text-white dark:group-hover:text-white">{FormatTemperature(searchCityData.main.temp)}</span>
           </div>
           {
@@ -48,7 +33,7 @@ const AdditionalInfo = () => {
               return (
                 <div className='mr-6 flex flex-col items-center last:mr-0' key={index}>
                   <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>{timeFormatter.format(new Date(forcast.dt_txt))}</span>
-                  <img src={handleWeatherImg(forcast.weather[0].main)} className="mt-1" alt={searchCityData.weather[0].main} />
+                  <img src={`/img/${forcast.weather[0].icon}.png`} className="mt-1" alt={searchCityData.weather[0].main} />
                   <span className='mt-1 text-xl group-hover:text-white dark:group-hover:text-white'>{FormatTemperature(forcast.main.temp)}</span>
                 </div>)
             })
