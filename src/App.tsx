@@ -6,8 +6,7 @@ export const AppContext = createContext<any>(null);
 function App() {
 
   const [cities, setCities] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchCityData, setSearchCityData] = useState<any>({});
   const [hourlyForcast, setHourlyForcast] = useState<{}>({});
   const [isError, setIsError] = useState<boolean>(false);
@@ -15,12 +14,6 @@ function App() {
   
   useEffect(() => {
     
-    /* Check darkmode */
-    let isdarkMode = localStorage.getItem('darkMode');
-    if (isdarkMode !== null) {
-      setDarkMode(() => isdarkMode === "true");
-    };
-
     /* Check Cities */
     let cities = localStorage.getItem('cities');
     if(cities !== null) {
@@ -45,7 +38,7 @@ function App() {
   
   return (
     <>
-      <AppContext.Provider value={{ darkMode, setDarkMode, cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast, FormatTemperature, setIsError }}>
+      <AppContext.Provider value={{ cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast, FormatTemperature, setIsError }}>
         <div className={ Object.keys(searchCityData).length === 0 ? "theme-dark" : GetTheme(searchCityData.weather[0].main)}>
           <div className={`bg-custom-bgPr text-custom-textPr text-pr min-h-screen duration-500`}>
             <div className="container mx-auto p-5">

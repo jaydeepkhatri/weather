@@ -1,5 +1,5 @@
 import { BiSearch } from "react-icons/bi";
-import { RiMenu3Line, RiDeleteBin6Line, RiCloseLine, RiSunLine, RiMoonLine } from "react-icons/ri";
+import { RiMenu3Line, RiDeleteBin6Line, RiCloseLine } from "react-icons/ri";
 import { useState, useContext, useRef } from "react";
 
 import { AppContext } from "../../App";
@@ -12,13 +12,7 @@ const Header = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [searchCityInput, setSearchCityInput] = useState<string>("");
 
-  const { darkMode, setDarkMode, cities, setCities, setSearchCityData, setIsLoading, setHourlyForcast, setIsError } = useContext(AppContext);
-
-
-  const handleDarkMode = (theme: boolean) => {
-    localStorage.setItem("darkMode", "" + theme);
-    setDarkMode(theme);
-  }
+  const { cities, setCities, setSearchCityData, setIsLoading, setHourlyForcast, setIsError } = useContext(AppContext);
 
   const handleNewCityInput = (ArgCity?: string) => {
 
@@ -114,20 +108,7 @@ const Header = () => {
       {/* Sidebar in Header */}
       <div className={`h-[100vh] fixed right-0 ${toggleMenu ? "w-[300px]" : "w-0"} top-0 duration-100 bg-custom-bgSe z-10`}>
         <button className="ml-auto mt-2 mr-2 block text-xl" aria-label="Close Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiCloseLine /></button>
-        <h2 className="text-4xl mt-12 px-8 flex justify-between">Weather.
-          {
-            darkMode ?
-              <div className="" onClick={() => { handleDarkMode(false) }}>
-                <RiMoonLine />
-              </div>
-              :
-              <div className="" onClick={() => { handleDarkMode(true) }}>
-                <RiSunLine />
-              </div>
-          }
-
-        </h2>
-
+        <h2 className="text-4xl mt-12 px-8">Weather.</h2>
         {
           /* Add Cities list (Obtained from LocalStorage) */
           cities.length > 0 ?
