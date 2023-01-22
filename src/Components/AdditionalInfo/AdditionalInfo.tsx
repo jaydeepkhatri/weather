@@ -23,7 +23,7 @@ const AdditionalInfo = () => {
         <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-2 bg-gray-100 dark:bg-[#393939] flex overflow-auto p-5 group rounded-3xl duration-100 hover:bg-teal-600 dark:hover:bg-teal-600">
           <div className='mr-6 flex flex-col items-center'>
             <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>Now</span>
-            <img src={`/img/${searchCityData.weather[0].icon}.png`} className="mt-1" alt={searchCityData.weather[0].main} />
+            <img src={`/img/${searchCityData.weather[0].icon}.svg`} className="mt-1" alt={searchCityData.weather[0].main} />
             <span className="mt-1 text-xl group-hover:text-white dark:group-hover:text-white">{FormatTemperature(searchCityData.main.temp)}</span>
           </div>
           {
@@ -33,7 +33,7 @@ const AdditionalInfo = () => {
               return (
                 <div className='mr-6 flex flex-col items-center last:mr-0' key={index}>
                   <span className='text-slate-600 dark:text-gray-500 text-xs whitespace-pre group-hover:text-white dark:group-hover:text-white duration-100'>{timeFormatter.format(new Date(forcast.dt_txt))}</span>
-                  <img src={`/img/${forcast.weather[0].icon}.png`} className="mt-1" alt={searchCityData.weather[0].main} />
+                  <img src={`/img/${forcast.weather[0].icon}.svg`} className="mt-1" alt={searchCityData.weather[0].main} />
                   <span className='mt-1 text-xl group-hover:text-white dark:group-hover:text-white'>{FormatTemperature(forcast.main.temp)}</span>
                 </div>)
             })
