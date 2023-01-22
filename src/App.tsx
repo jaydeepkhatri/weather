@@ -40,7 +40,7 @@ function App() {
     <>
       <AppContext.Provider value={{ cities, setCities, searchCityData, setSearchCityData, setIsLoading, hourlyForcast, setHourlyForcast, FormatTemperature, setIsError }}>
         <div className={ Object.keys(searchCityData).length === 0 ? "theme-dark" : GetTheme(searchCityData.weather[0].main)}>
-          <div className={`bg-custom-bgPr text-custom-textPr text-pr min-h-screen duration-500`}>
+          <div className={`bg-custom-bgPr text-custom-textPr min-h-screen duration-500`}>
             <div className="container mx-auto p-5">
               <Header />
               {

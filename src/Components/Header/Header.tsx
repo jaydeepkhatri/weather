@@ -98,7 +98,7 @@ const Header = () => {
     <>
       <div className="header flex justify-center">
         <form className="flex flex-1 bg-custom-bgSe rounded-2xl max-w-[400px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
-          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white w-0 px-5 py-2 bg-custom-bgSe text-custom-textSe outline-none focus:outline-none" />
+          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl w-0 px-5 py-2 bg-custom-bgSe text-custom-textPr outline-none focus:outline-none" />
           <button className="px-3 py-2 text-xl" aria-label="Search Button" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
         </form>
         <button className="rounded-2xl text-xl ml-2 py-3 px-4 bg-custom-bgSe duration-100" aria-label="Handle Open/Close of Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
