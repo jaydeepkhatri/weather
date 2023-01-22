@@ -8,25 +8,75 @@
         padding: 0;
         box-sizing: border-box;
     }
-
     body {
         font-family: "Jost", sans-serif;
     }
 }
 
-
-
-.bg-cus-gray {
-    background: #393939;
+.theme-dark {
+    --color-bg-primay: rgb(0, 0, 0);
+    --color-bg-secondary: rgb(57, 57, 57);
+    --color-text-primary: rgb(255, 255, 255);
+    --color-text-secondary: rgb(136, 136, 136);
 }
 
-.bg-cus-gray-hover:hover {
-    background: #393939;
+.theme-sunny {
+    --color-bg-primay: rgb(213, 248, 255);
+    --color-bg-secondary: rgb(242, 254, 255);
+    --color-text-primary: rgb(0, 0, 0);
+    --color-text-secondary: rgb(167, 167, 167);
 }
 
-.text-cus-gray {
-    color: #888888;
+.theme-smoke {
+    --color-bg-primay: rgb(255, 239, 213);
+    --color-bg-secondary: rgb(255, 253, 240);
+    --color-text-primary: rgb(0, 0, 0);
+    --color-text-secondary: rgb(129, 129, 129);
 }
+
+.theme-thunderstorm {
+    --color-bg-primay: rgb(153, 153, 153);
+    --color-bg-secondary: rgb(100, 100, 100);
+    --color-text-primary: rgb(255, 255, 255);
+    --color-text-secondary: rgb(221, 221, 221);
+}
+
+.theme-clouds {
+    --color-bg-primay: rgb(52, 60, 70);
+    --color-bg-secondary: rgb(67, 76, 88);
+    --color-text-primary: rgb(255, 255, 255);
+    --color-text-secondary: rgb(153, 153, 153);
+}
+
+.theme-drizzle {
+    --color-bg-primay: rgb(97, 207, 154);
+    --color-bg-secondary: rgb(39, 171, 126);
+    --color-text-primary: rgb(255, 255, 255);
+    --color-text-secondary: rgb(233, 233, 233);
+}
+
+.theme-rain {
+    --color-bg-primay: rgb(75, 134, 201);
+    --color-bg-secondary: rgb(33, 106, 175);
+    --color-text-primary: rgb(255, 255, 255);
+    --color-text-secondary: rgb(215, 215, 215);
+}
+
+.theme-snow {
+    --color-bg-primay: rgb(229, 229, 229);
+    --color-bg-secondary: rgb(209, 209, 209);
+    --color-text-primary: rgb(0, 0, 0);
+    --color-text-secondary: rgb(74, 74, 74);
+}
+
+.theme-clear {
+    --color-bg-primay: rgb(255, 255, 255);
+    --color-bg-secondary: rgb(225, 225, 225);
+    --color-text-primary: rgb(23, 23, 23);
+    --color-text-secondary: rgb(100, 100, 100);
+}
+
+
 
 ::-webkit-scrollbar {
     height: 5px;

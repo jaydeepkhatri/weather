@@ -71,8 +71,8 @@ const Header = () => {
         setSearchCityData(obj1.data);
         setIsLoading(false);
         setHourlyForcast(obj2.data);
-        console.log(obj1);
-        console.log(obj2);
+        console.log(obj1.data);
+        console.log(obj2.data);
 
         // add the city to localStorage
         if (localStorage["cities"]) {
@@ -92,6 +92,8 @@ const Header = () => {
 
       }))
       .catch(error => {
+        setSearchCityData({});
+        setHourlyForcast({});
         setIsLoading(false);
         setIsError(true);
       });
@@ -101,16 +103,16 @@ const Header = () => {
   return (
     <>
       <div className="header flex justify-center">
-        <form className="flex flex-1 bg-gray-200 dark:bg-[#393939] rounded-2xl max-w-[400px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
-          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white w-0 px-5 py-2 bg-gray-200 dark:bg-[#393939] outline-none focus:outline-none" />
+        <form className="flex flex-1 bg-custom-bgSe rounded-2xl max-w-[400px]" onSubmit={(e) => { e.preventDefault(); handleNewCityInput(); }}>
+          <input type="text" placeholder="Search City" list="cities-data" ref={searchRef} onInput={(e) => handleSearchCityInputChange((e.target as HTMLInputElement).value)} className="flex-1 rounded-2xl text-xl color-white w-0 px-5 py-2 bg-custom-bgSe text-custom-textSe outline-none focus:outline-none" />
           <button className="px-3 py-2 text-xl" aria-label="Search Button" onClick={(e) => { e.preventDefault(); handleNewCityInput(); }}><BiSearch /></button>
         </form>
-        <button className="rounded-2xl text-xl ml-2 py-3 px-4 hover:bg-gray-200 dark:hover:bg-[#393939] duration-100" aria-label="Handle Open/Close of Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
+        <button className="rounded-2xl text-xl ml-2 py-3 px-4 bg-custom-bgSe duration-100" aria-label="Handle Open/Close of Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiMenu3Line /></button>
       </div>
 
 
       {/* Sidebar in Header */}
-      <div className={`h-[100vh] fixed right-0 ${toggleMenu ? "w-[300px]" : "w-0"} top-0 duration-100 bg-gray-200 dark:bg-slate-800 z-10`}>
+      <div className={`h-[100vh] fixed right-0 ${toggleMenu ? "w-[300px]" : "w-0"} top-0 duration-100 bg-custom-bgSe z-10`}>
         <button className="ml-auto mt-2 mr-2 block text-xl" aria-label="Close Sidebar" onClick={() => { setToggleMenu(!toggleMenu) }}><RiCloseLine /></button>
         <h2 className="text-4xl mt-12 px-8 flex justify-between">Weather.
           {
@@ -130,12 +132,11 @@ const Header = () => {
           /* Add Cities list (Obtained from LocalStorage) */
           cities.length > 0 ?
             <>
-              <p className="mt-12 px-8 text-gray-500 text-sm">Recent Searches</p>
+              <p className="mt-12 px-8 text-custom-textSe text-sm">Recent Searches</p>
               <ul className="mt-0 px-0">
                 {
                   cities.map((city: string, i: number) => {
-
-                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl relative flex justify-between items-center hover:bg-slate-300 dark:hover:bg-[#393939] duration-100"><span onClick={() => { handleNewCityInput(city) }}>{city}</span> <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
+                    return <li key={i} className="px-8 py-2 mt-2 mb-1 text-xl hover:bg-custom-bgPr relative flex justify-between items-center duration-100"><span onClick={() => { handleNewCityInput(city) }}>{city}</span> <RiDeleteBin6Line onClick={() => removeCitySearchList(i)} /></li>
                   })
                 }
               </ul>
