@@ -20,7 +20,7 @@ const AdditionalInfo = () => {
     <>
 
       <div className="grid grid-cols-2 m-auto gap-2 max-w-[460px]">
-        <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-2 bg-custom-bgSe flex overflow-auto p-5 group rounded-3xl duration-100 hover:bg-teal-600 dark:hover:bg-teal-600">
+        <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-2 bg-custom-bgSe flex overflow-auto p-5 group rounded-3xl duration-100 hover:bg-teal-600">
           <div className='mr-6 flex flex-col items-center'>
             <span className='text-custom-textSe text-xs whitespace-pre group-hover:text-white duration-100'>Now</span>
             <img src={`/img/${searchCityData.weather[0].icon}.svg`} className="mt-2" alt={searchCityData.weather[0].main} />
