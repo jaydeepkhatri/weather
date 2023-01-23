@@ -10,7 +10,6 @@ function App() {
   const [searchCityData, setSearchCityData] = useState<any>({});
   const [hourlyForcast, setHourlyForcast] = useState<{}>({});
   const [isError, setIsError] = useState<boolean>(false);
-
   
   useEffect(() => {
     
