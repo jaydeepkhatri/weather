@@ -65,8 +65,6 @@ const Header = () => {
         setSearchCityData(obj1.data);
         setIsLoading(false);
         setHourlyForcast(obj2.data);
-        console.log(obj1.data);
-        console.log(obj2.data);
 
         // add the city to localStorage
         if (localStorage["cities"]) {

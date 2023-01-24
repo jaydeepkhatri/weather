@@ -28,7 +28,6 @@ const AdditionalInfo = () => {
               return (
                 <div className='mr-6 flex flex-col items-center last:mr-0' key={index}>
                   <span className='text-custom-textSe text-xs whitespace-pre group-hover:text-white'>{timeFormatter.format(new Date((forcast.dt + searchCityData.timezone) * 1000))}</span>
-                  <>{console.log(new Date((forcast.dt + searchCityData.timezone + 2) * 1000))}</>
                   <img src={`/img/${forcast.weather[0].icon}.svg`} className="mt-2" alt={searchCityData.weather[0].main} />
                   <span className='mt-2 text-xl group-hover:text-white'>{FormatTemperature(forcast.main.temp)}</span>
                 </div>)
