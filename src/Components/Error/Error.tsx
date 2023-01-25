@@ -9,7 +9,7 @@ const Error = () => {
                 <ul className="mt-6 mx-auto max-w-[360px] text-left list-disc">
                     <li>Try again</li>
                     <li>Check the city name(spelling issue)</li>
-                    <li>Raise issue on Github</li>
+                    <li>Raise issue on <a href="https://github.com/jaydeepkhatri/weather" className="underline" target="_blank" rel="noreferrer">Github</a></li>
                     <li>Just chill bro :)</li>
                 </ul>
             </div>
